@@ -126,7 +126,7 @@
             this.btnTransactions.Text = "      Transactions";
             this.btnTransactions.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnTransactions.UseVisualStyleBackColor = true;
-            this.btnTransactions.Click += new System.EventHandler(this.button1_Click);
+
             // 
             // btnDashboard
             // 
@@ -145,6 +145,7 @@
             this.btnDashboard.Text = "    Dashboard";
             this.btnDashboard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDashboard.UseVisualStyleBackColor = false;
+            this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
             // 
             // btnProduct
             // 

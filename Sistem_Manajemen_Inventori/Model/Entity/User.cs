@@ -8,9 +8,10 @@ namespace Sistem_Manajemen_Inventori.Model.Entity
 {
     public class User
     {
-        public string id_user {  get; set; }
+        public int id_user { get; set; }
         public string username { get; set; }
         public string password { get; set; }
         public string email { get; set; }
     }
 }
+

@@ -8,9 +8,11 @@ namespace Sistem_Manajemen_Inventori.Model.Entity
 {
     public class Transaksi
     {
-        public string id_kategori {  get; set; }
-        public string id_barang { get; set; }
-        public string id_user { get; set; }
-        public string tgl_transaksi {  get; set; }
+        public string nama_kategori { get; set; }
+        public string nama_barang { get; set; }
+        public int price_barang { get; set; }
+        public string username { get; set; }
+        public int jumlah_transaksi { get; set; }
+        public DateTime tgl_transaksi { get; set; }
     }
 }

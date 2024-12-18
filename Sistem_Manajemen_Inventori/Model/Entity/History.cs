@@ -9,11 +9,12 @@ namespace Sistem_Manajemen_Inventori.Model.Entity
 {
     public class History
     {
-        public string id_history {  get; set; }
-        public string id_barang { get; set; }
-        public string id_transaksi { get; set; }
-        public string kategori { get; set; }
-        public string tgl_masuk { get; set; }
-        public string tgl_keluar { get; set; }
+        public int id_history { get; set; }
+        public string nama_barang { get; set; }
+        public int id_transaksi { get; set; }
+        public string nama_kategori { get; set; }
+        public string username { get; set; }
+        public DateTime tgl_masuk { get; set; }
+        public DateTime tgl_transaksi { get; set; }
     }
 }

@@ -28,28 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtProductCode = new System.Windows.Forms.TextBox();
+            this.txtProductCodeAdd = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtProductName = new System.Windows.Forms.TextBox();
+            this.txtProductNameAdd = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtStock = new System.Windows.Forms.TextBox();
+            this.txtStockAdd = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtPrice = new System.Windows.Forms.TextBox();
+            this.txtPriceAdd = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.btnSave = new System.Windows.Forms.Button();
+            this.btnSaveAdd = new System.Windows.Forms.Button();
             this.dtpTanggal = new System.Windows.Forms.DateTimePicker();
-            this.cmbCategory = new System.Windows.Forms.ComboBox();
+            this.cmbCategoryAdd = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
-            // txtProductCode
+            // txtProductCodeAdd
             // 
-            this.txtProductCode.Location = new System.Drawing.Point(61, 132);
-            this.txtProductCode.Name = "txtProductCode";
-            this.txtProductCode.Size = new System.Drawing.Size(275, 22);
-            this.txtProductCode.TabIndex = 0;
+            this.txtProductCodeAdd.Location = new System.Drawing.Point(61, 132);
+            this.txtProductCodeAdd.Name = "txtProductCodeAdd";
+            this.txtProductCodeAdd.Size = new System.Drawing.Size(275, 22);
+            this.txtProductCodeAdd.TabIndex = 0;
             // 
             // label1
             // 
@@ -57,7 +57,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(233, 31);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(272, 52);
+            this.label1.Size = new System.Drawing.Size(270, 51);
             this.label1.TabIndex = 1;
             this.label1.Text = "Add Product";
             // 
@@ -79,12 +79,12 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Product Name";
             // 
-            // txtProductName
+            // txtProductNameAdd
             // 
-            this.txtProductName.Location = new System.Drawing.Point(61, 203);
-            this.txtProductName.Name = "txtProductName";
-            this.txtProductName.Size = new System.Drawing.Size(275, 22);
-            this.txtProductName.TabIndex = 3;
+            this.txtProductNameAdd.Location = new System.Drawing.Point(61, 203);
+            this.txtProductNameAdd.Name = "txtProductNameAdd";
+            this.txtProductNameAdd.Size = new System.Drawing.Size(275, 22);
+            this.txtProductNameAdd.TabIndex = 3;
             // 
             // label4
             // 
@@ -95,12 +95,12 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Stock";
             // 
-            // txtStock
+            // txtStockAdd
             // 
-            this.txtStock.Location = new System.Drawing.Point(61, 273);
-            this.txtStock.Name = "txtStock";
-            this.txtStock.Size = new System.Drawing.Size(275, 22);
-            this.txtStock.TabIndex = 5;
+            this.txtStockAdd.Location = new System.Drawing.Point(61, 273);
+            this.txtStockAdd.Name = "txtStockAdd";
+            this.txtStockAdd.Size = new System.Drawing.Size(275, 22);
+            this.txtStockAdd.TabIndex = 5;
             // 
             // label5
             // 
@@ -111,12 +111,12 @@
             this.label5.TabIndex = 12;
             this.label5.Text = "Price";
             // 
-            // txtPrice
+            // txtPriceAdd
             // 
-            this.txtPrice.Location = new System.Drawing.Point(389, 273);
-            this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(266, 22);
-            this.txtPrice.TabIndex = 11;
+            this.txtPriceAdd.Location = new System.Drawing.Point(389, 273);
+            this.txtPriceAdd.Name = "txtPriceAdd";
+            this.txtPriceAdd.Size = new System.Drawing.Size(266, 22);
+            this.txtPriceAdd.TabIndex = 11;
             // 
             // label6
             // 
@@ -136,15 +136,15 @@
             this.label7.TabIndex = 8;
             this.label7.Text = "Category";
             // 
-            // btnSave
+            // btnSaveAdd
             // 
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(283, 334);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(158, 30);
-            this.btnSave.TabIndex = 13;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSaveAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveAdd.Location = new System.Drawing.Point(283, 334);
+            this.btnSaveAdd.Name = "btnSaveAdd";
+            this.btnSaveAdd.Size = new System.Drawing.Size(158, 30);
+            this.btnSaveAdd.TabIndex = 13;
+            this.btnSaveAdd.Text = "Save";
+            this.btnSaveAdd.UseVisualStyleBackColor = true;
             // 
             // dtpTanggal
             // 
@@ -153,33 +153,33 @@
             this.dtpTanggal.Size = new System.Drawing.Size(266, 22);
             this.dtpTanggal.TabIndex = 14;
             // 
-            // cmbCategory
+            // cmbCategoryAdd
             // 
-            this.cmbCategory.FormattingEnabled = true;
-            this.cmbCategory.Location = new System.Drawing.Point(389, 132);
-            this.cmbCategory.Name = "cmbCategory";
-            this.cmbCategory.Size = new System.Drawing.Size(266, 24);
-            this.cmbCategory.TabIndex = 15;
+            this.cmbCategoryAdd.FormattingEnabled = true;
+            this.cmbCategoryAdd.Location = new System.Drawing.Point(389, 132);
+            this.cmbCategoryAdd.Name = "cmbCategoryAdd";
+            this.cmbCategoryAdd.Size = new System.Drawing.Size(266, 24);
+            this.cmbCategoryAdd.TabIndex = 15;
             // 
             // frmAddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.Controls.Add(this.cmbCategory);
+            this.Controls.Add(this.cmbCategoryAdd);
             this.Controls.Add(this.dtpTanggal);
-            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.btnSaveAdd);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.txtPrice);
+            this.Controls.Add(this.txtPriceAdd);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtStock);
+            this.Controls.Add(this.txtStockAdd);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtProductName);
+            this.Controls.Add(this.txtProductNameAdd);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtProductCode);
+            this.Controls.Add(this.txtProductCodeAdd);
             this.Name = "frmAddProduct";
             this.Size = new System.Drawing.Size(723, 396);
             this.ResumeLayout(false);
@@ -189,19 +189,19 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtProductCode;
+        private System.Windows.Forms.TextBox txtProductCodeAdd;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtProductName;
+        private System.Windows.Forms.TextBox txtProductNameAdd;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtStock;
+        private System.Windows.Forms.TextBox txtStockAdd;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtPrice;
+        private System.Windows.Forms.TextBox txtPriceAdd;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnSaveAdd;
         private System.Windows.Forms.DateTimePicker dtpTanggal;
-        private System.Windows.Forms.ComboBox cmbCategory;
+        private System.Windows.Forms.ComboBox cmbCategoryAdd;
     }
 }

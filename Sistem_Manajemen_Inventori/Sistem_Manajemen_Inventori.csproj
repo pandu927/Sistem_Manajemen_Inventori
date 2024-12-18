@@ -47,6 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\BarangController.cs" />
+    <Compile Include="Controller\HistoryController.cs" />
+    <Compile Include="Controller\KategoriController.cs" />
+    <Compile Include="Controller\TransaksiController.cs" />
+    <Compile Include="Controller\UserController.cs" />
     <Compile Include="Model\Contex\DbContext.cs" />
     <Compile Include="Model\Entity\Barang.cs" />
     <Compile Include="Model\Entity\History.cs" />
@@ -71,6 +76,12 @@
     </Compile>
     <Compile Include="View\frmEditCategory.Designer.cs">
       <DependentUpon>frmEditCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmeEditCategory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\frmeEditCategory.Designer.cs">
+      <DependentUpon>frmeEditCategory.cs</DependentUpon>
     </Compile>
     <Compile Include="View\frmTransactions.cs">
       <SubType>UserControl</SubType>
@@ -102,11 +113,11 @@
     <Compile Include="View\frmCategory.Designer.cs">
       <DependentUpon>frmCategory.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Menu Utama.cs">
+    <Compile Include="View\Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Menu Utama.Designer.cs">
-      <DependentUpon>Menu Utama.cs</DependentUpon>
+    <Compile Include="View\Dashboard.Designer.cs">
+      <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="View\User Login.cs">
       <SubType>Form</SubType>
@@ -139,6 +150,9 @@
     <EmbeddedResource Include="View\frmEditCategory.resx">
       <DependentUpon>frmEditCategory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\frmeEditCategory.resx">
+      <DependentUpon>frmeEditCategory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\frmTransactions.resx">
       <DependentUpon>frmTransactions.cs</DependentUpon>
     </EmbeddedResource>
@@ -151,8 +165,8 @@
     <EmbeddedResource Include="View\frmProduct.resx">
       <DependentUpon>frmProduct.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Menu Utama.resx">
-      <DependentUpon>Menu Utama.cs</DependentUpon>
+    <EmbeddedResource Include="View\Dashboard.resx">
+      <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\User Login.resx">
       <DependentUpon>User Login.cs</DependentUpon>
@@ -206,9 +220,7 @@
   <ItemGroup>
     <None Include="Resources\layout_9121538.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controler\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\menu_12328741.png" />
   </ItemGroup>

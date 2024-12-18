@@ -79,7 +79,6 @@
             this.lblDateTime.Size = new System.Drawing.Size(58, 16);
             this.lblDateTime.TabIndex = 1;
             this.lblDateTime.Text = "Tanggal";
-            this.lblDateTime.Click += new System.EventHandler(this.lblTanggal_Click);
             // 
             // panel1
             // 
@@ -132,7 +131,6 @@
             this.label5.Size = new System.Drawing.Size(148, 22);
             this.label5.TabIndex = 0;
             this.label5.Text = "Recent Product";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // panel6
             // 
@@ -153,6 +151,7 @@
             this.lblTodayIncome.Size = new System.Drawing.Size(53, 38);
             this.lblTodayIncome.TabIndex = 4;
             this.lblTodayIncome.Text = "17";
+
             // 
             // panel7
             // 
@@ -193,6 +192,7 @@
             this.lblTotalProduct.Size = new System.Drawing.Size(53, 38);
             this.lblTotalProduct.TabIndex = 3;
             this.lblTotalProduct.Text = "17";
+        
             // 
             // panel5
             // 
@@ -233,6 +233,7 @@
             this.lblTotalCategory.Size = new System.Drawing.Size(53, 38);
             this.lblTotalCategory.TabIndex = 2;
             this.lblTotalCategory.Text = "17";
+
             // 
             // panel3
             // 
@@ -242,7 +243,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(254, 55);
             this.panel3.TabIndex = 1;
-            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // label2
             // 
@@ -254,7 +254,6 @@
             this.label2.Size = new System.Drawing.Size(129, 22);
             this.label2.TabIndex = 0;
             this.label2.Text = "Total Category";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // lblUsername
             // 

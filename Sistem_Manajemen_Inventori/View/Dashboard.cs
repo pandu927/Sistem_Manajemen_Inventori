@@ -15,15 +15,7 @@ namespace Sistem_Manajemen_Inventori.View
         public Dashboard()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-       
-
+        }       
         private void Dashboard_Load(object sender, EventArgs e)
         {
 
@@ -36,6 +28,11 @@ namespace Sistem_Manajemen_Inventori.View
             {
                 this.Close();
             }
+        }
+
+        private void btnDashboard_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

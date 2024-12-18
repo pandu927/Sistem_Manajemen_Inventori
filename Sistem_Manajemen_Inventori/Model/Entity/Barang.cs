@@ -8,12 +8,11 @@ namespace Sistem_Manajemen_Inventori.Model.Entity
 {
     public class Barang
     {
-        public string id_barang { get; set; }
+        public int id_barang { get; set; }
         public string nama_barang { get; set; }
-        public string category { get; set; }
-        public int jml_barang { get; set; }
-        public int hrg_barang { get; set; }
-        public  string status_barang { get; set; }
-        public string tgl_barang { get; set; }
+        public string nama_kategori { get; set; }
+        public int jumlah_barang { get; set; }
+        public int price_barang { get; set; }
+        public DateTime tgl_masuk { get; set; }
     }
 }
