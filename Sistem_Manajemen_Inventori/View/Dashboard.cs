@@ -34,5 +34,10 @@ namespace Sistem_Manajemen_Inventori.View
         {
 
         }
+
+        private void btnCategory_Click(object sender, EventArgs e)
+        {
+            // ini adalah contoh
+        }
     }
 }

@@ -110,6 +110,7 @@
             this.btnCategory.Text = "     Category";
             this.btnCategory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCategory.UseVisualStyleBackColor = true;
+            this.btnCategory.Click += new System.EventHandler(this.btnCategory_Click);
             // 
             // btnTransactions
             // 
@@ -126,7 +127,6 @@
             this.btnTransactions.Text = "      Transactions";
             this.btnTransactions.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnTransactions.UseVisualStyleBackColor = true;
-
             // 
             // btnDashboard
             // 
