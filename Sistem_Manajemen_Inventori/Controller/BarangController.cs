@@ -36,5 +36,31 @@ namespace Sistem_Manajemen_Inventori.Controller
 
             return result;
         }
+
+        public List<Barang> getAllProduct()
+        {
+            List<Barang> list = new List<Barang>();
+
+            using (DbContext context = new DbContext())
+            {
+                _repository = new BarangRepository(context);
+                list = _repository.getAllProduct();
+            }
+
+            return list;
+        }
+
+        public List<Barang> getProductByTitle(Barang getTitleProduct)
+        {
+            List<Barang> list = new List<Barang>();
+
+            using (DbContext context = new DbContext())
+            {
+                _repository = new BarangRepository(context);
+                list = _repository.getProductByTitle(getTitleProduct);
+            }
+
+            return list;
+        }
     }
 }

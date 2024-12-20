@@ -163,5 +163,72 @@ namespace Sistem_Manajemen_Inventori.Model.Repository
 
         }
 
+        public List<Barang> getAllProduct()
+        {
+            List<Barang> list = new List<Barang>();
+            string sql = @"SELECT * FROM Barang";
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand(sql, _conn))
+                {
+                    using (SqlDataReader dtr = cmd.ExecuteReader())
+                    {
+                        while (dtr.Read())
+                        {
+                            Barang barang = new Barang();
+                            barang.id_barang = Convert.ToInt32(dtr["id_barang"]);
+                            barang.nama_barang = dtr["Product Name"].ToString();
+                            barang.jumlah_barang = Convert.ToInt32(dtr["Stock"]);
+                            barang.nama_kategori = dtr["Category"].ToString();
+                            barang.price_barang = Convert.ToInt32(dtr["Price"]);
+                            barang.tgl_masuk = Convert.ToDateTime(dtr["stocks"]); // Memastikan tgl_masuk dikonversi ke DateTime
+                            list.Add(barang);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Print("getRecentMembers error: {0}", ex.Message);
+
+            }
+
+            return list;
+        }
+
+        public List<Barang> getProductByTitle(Barang getTitleProduct)
+        {
+            List<Barang> list = new List<Barang>();
+            string sql = @"SELECT * FROM Barang WHERE title LIKE @title";
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand(sql, _conn))
+                {
+                    cmd.Parameters.AddWithValue("@title", getTitleProduct.nama_barang + '%');
+                    using (SqlDataReader dtr = cmd.ExecuteReader())
+                    {
+                        while (dtr.Read())
+                        {
+                            Barang barang = new Barang();
+                            barang.id_barang = Convert.ToInt32(dtr["id_barang"]);
+                            barang.nama_barang = dtr["Product Name"].ToString();
+                            barang.jumlah_barang = Convert.ToInt32(dtr["Stock"]);
+                            barang.nama_kategori = dtr["Category"].ToString();
+                            barang.price_barang = Convert.ToInt32(dtr["Price"]);
+                            barang.tgl_masuk = Convert.ToDateTime(dtr["stocks"]); // Memastikan tgl_masuk dikonversi ke DateTime
+                            list.Add(barang);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Print("getRecentMembers error: {0}", ex.Message);
+
+            }
+
+            return list;
+        }
+
     }
 }
