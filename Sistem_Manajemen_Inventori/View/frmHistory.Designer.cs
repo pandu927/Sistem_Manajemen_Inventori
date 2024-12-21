@@ -31,8 +31,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lvwHistory = new System.Windows.Forms.ListView();
             this.btnExportToExcel = new System.Windows.Forms.Button();
+            this.lvwHistory = new System.Windows.Forms.ListView();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -40,17 +40,19 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(21, 21);
+            this.label1.Location = new System.Drawing.Point(16, 17);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(130, 39);
+            this.label1.Size = new System.Drawing.Size(107, 31);
             this.label1.TabIndex = 0;
             this.label1.Text = "History";
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(692, 55);
+            this.txtSearch.Location = new System.Drawing.Point(519, 45);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(264, 22);
+            this.txtSearch.Size = new System.Drawing.Size(199, 20);
             this.txtSearch.TabIndex = 2;
             this.txtSearch.Text = "Search";
             // 
@@ -59,38 +61,43 @@
             this.panel1.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.panel1.Controls.Add(this.btnExportToExcel);
             this.panel1.Controls.Add(this.lvwHistory);
-            this.panel1.Location = new System.Drawing.Point(0, 103);
+            this.panel1.Location = new System.Drawing.Point(0, 84);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(995, 567);
+            this.panel1.Size = new System.Drawing.Size(746, 461);
             this.panel1.TabIndex = 3;
-            // 
-            // lvwHistory
-            // 
-            this.lvwHistory.HideSelection = false;
-            this.lvwHistory.Location = new System.Drawing.Point(42, 24);
-            this.lvwHistory.Name = "lvwHistory";
-            this.lvwHistory.Size = new System.Drawing.Size(913, 493);
-            this.lvwHistory.TabIndex = 0;
-            this.lvwHistory.UseCompatibleStateImageBehavior = false;
             // 
             // btnExportToExcel
             // 
-            this.btnExportToExcel.Location = new System.Drawing.Point(783, 523);
+            this.btnExportToExcel.Location = new System.Drawing.Point(587, 425);
+            this.btnExportToExcel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnExportToExcel.Name = "btnExportToExcel";
-            this.btnExportToExcel.Size = new System.Drawing.Size(171, 30);
+            this.btnExportToExcel.Size = new System.Drawing.Size(128, 24);
             this.btnExportToExcel.TabIndex = 1;
             this.btnExportToExcel.Text = "Export To Excel";
             this.btnExportToExcel.UseVisualStyleBackColor = true;
             // 
+            // lvwHistory
+            // 
+            this.lvwHistory.HideSelection = false;
+            this.lvwHistory.Location = new System.Drawing.Point(32, 20);
+            this.lvwHistory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lvwHistory.Name = "lvwHistory";
+            this.lvwHistory.Size = new System.Drawing.Size(686, 401);
+            this.lvwHistory.TabIndex = 0;
+            this.lvwHistory.UseCompatibleStateImageBehavior = false;
+            // 
             // frmHistory
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "frmHistory";
-            this.Size = new System.Drawing.Size(996, 671);
+            this.Size = new System.Drawing.Size(747, 545);
+            this.Load += new System.EventHandler(this.frmHistory_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

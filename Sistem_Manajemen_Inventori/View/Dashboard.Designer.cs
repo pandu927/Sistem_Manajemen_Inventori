@@ -56,9 +56,8 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(335, 690);
+            this.panel1.Size = new System.Drawing.Size(251, 561);
             this.panel1.TabIndex = 0;
             // 
             // btnLogout
@@ -69,10 +68,9 @@
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.ForeColor = System.Drawing.Color.White;
-            this.btnLogout.Location = new System.Drawing.Point(0, 612);
-            this.btnLogout.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLogout.Location = new System.Drawing.Point(0, 497);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(335, 79);
+            this.btnLogout.Size = new System.Drawing.Size(251, 64);
             this.btnLogout.TabIndex = 4;
             this.btnLogout.Text = "Logout";
             this.btnLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -86,14 +84,14 @@
             this.btnHistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHistory.Image = global::Sistem_Manajemen_Inventori.Properties.Resources.history_12252535;
-            this.btnHistory.Location = new System.Drawing.Point(16, 491);
-            this.btnHistory.Margin = new System.Windows.Forms.Padding(4);
+            this.btnHistory.Location = new System.Drawing.Point(12, 399);
             this.btnHistory.Name = "btnHistory";
-            this.btnHistory.Size = new System.Drawing.Size(315, 75);
+            this.btnHistory.Size = new System.Drawing.Size(236, 61);
             this.btnHistory.TabIndex = 4;
             this.btnHistory.Text = "     History";
             this.btnHistory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnHistory.UseVisualStyleBackColor = true;
+            this.btnHistory.Click += new System.EventHandler(this.btnHistory_Click);
             // 
             // btnCategory
             // 
@@ -102,10 +100,9 @@
             this.btnCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCategory.Image = global::Sistem_Manajemen_Inventori.Properties.Resources.Menu_05__1_;
-            this.btnCategory.Location = new System.Drawing.Point(16, 409);
-            this.btnCategory.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCategory.Location = new System.Drawing.Point(12, 332);
             this.btnCategory.Name = "btnCategory";
-            this.btnCategory.Size = new System.Drawing.Size(315, 75);
+            this.btnCategory.Size = new System.Drawing.Size(236, 61);
             this.btnCategory.TabIndex = 4;
             this.btnCategory.Text = "     Category";
             this.btnCategory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -119,14 +116,14 @@
             this.btnTransactions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTransactions.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTransactions.Image = global::Sistem_Manajemen_Inventori.Properties.Resources.money_exchange_2976392;
-            this.btnTransactions.Location = new System.Drawing.Point(16, 326);
-            this.btnTransactions.Margin = new System.Windows.Forms.Padding(4);
+            this.btnTransactions.Location = new System.Drawing.Point(12, 265);
             this.btnTransactions.Name = "btnTransactions";
-            this.btnTransactions.Size = new System.Drawing.Size(315, 75);
+            this.btnTransactions.Size = new System.Drawing.Size(236, 61);
             this.btnTransactions.TabIndex = 3;
             this.btnTransactions.Text = "      Transactions";
             this.btnTransactions.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnTransactions.UseVisualStyleBackColor = true;
+            this.btnTransactions.Click += new System.EventHandler(this.btnTransaction_Click);
             // 
             // btnDashboard
             // 
@@ -137,10 +134,9 @@
             this.btnDashboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDashboard.ForeColor = System.Drawing.Color.Black;
             this.btnDashboard.Image = global::Sistem_Manajemen_Inventori.Properties.Resources.Group_5__1_;
-            this.btnDashboard.Location = new System.Drawing.Point(16, 161);
-            this.btnDashboard.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDashboard.Location = new System.Drawing.Point(12, 131);
             this.btnDashboard.Name = "btnDashboard";
-            this.btnDashboard.Size = new System.Drawing.Size(315, 75);
+            this.btnDashboard.Size = new System.Drawing.Size(236, 61);
             this.btnDashboard.TabIndex = 2;
             this.btnDashboard.Text = "    Dashboard";
             this.btnDashboard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -154,24 +150,23 @@
             this.btnProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProduct.Image = global::Sistem_Manajemen_Inventori.Properties.Resources.quality_2686299__2_;
-            this.btnProduct.Location = new System.Drawing.Point(16, 244);
-            this.btnProduct.Margin = new System.Windows.Forms.Padding(4);
+            this.btnProduct.Location = new System.Drawing.Point(12, 198);
             this.btnProduct.Name = "btnProduct";
-            this.btnProduct.Size = new System.Drawing.Size(315, 75);
+            this.btnProduct.Size = new System.Drawing.Size(236, 61);
             this.btnProduct.TabIndex = 2;
             this.btnProduct.Text = "     Product";
             this.btnProduct.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnProduct.UseVisualStyleBackColor = true;
+            this.btnProduct.Click += new System.EventHandler(this.btnProduct_Click);
             // 
             // label2
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(152, 92);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(114, 75);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 25);
+            this.label2.Size = new System.Drawing.Size(67, 20);
             this.label2.TabIndex = 2;
             this.label2.Text = "Solution";
             // 
@@ -180,10 +175,9 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(149, 46);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(112, 37);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(120, 39);
+            this.label1.Size = new System.Drawing.Size(99, 31);
             this.label1.TabIndex = 2;
             this.label1.Text = "Storify";
             // 
@@ -191,21 +185,19 @@
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.Image = global::Sistem_Manajemen_Inventori.Properties.Resources.Icon_Barang;
-            this.pictureBox1.Location = new System.Drawing.Point(45, 39);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Location = new System.Drawing.Point(34, 32);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(96, 84);
+            this.pictureBox1.Size = new System.Drawing.Size(72, 68);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
             // Dashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1312, 690);
+            this.ClientSize = new System.Drawing.Size(984, 561);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Dashboard";
             this.Text = "Dashboard";
             this.Load += new System.EventHandler(this.Dashboard_Load);

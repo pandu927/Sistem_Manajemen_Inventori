@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using Sistem_Manajemen_Inventori.Model.Entity;
 
 
 namespace Sistem_Manajemen_Inventori.Model.Contex

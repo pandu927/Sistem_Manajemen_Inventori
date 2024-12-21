@@ -151,7 +151,6 @@ namespace Sistem_Manajemen_Inventori.Model.Repository
                 try
                 {
                     result = Convert.ToInt32(command.ExecuteScalar());
-
                 }
                 catch (Exception ex)
                 {
@@ -229,6 +228,27 @@ namespace Sistem_Manajemen_Inventori.Model.Repository
 
             return list;
         }
+
+        public string GetIdBarangByName(string namaBarang)
+        {
+            using (DbContext context = new DbContext())
+            {
+                string query = "SELECT Id_Barang FROM Barang WHERE Nama_Barang = @namaBarang";
+                using (SqlCommand cmd = new SqlCommand(query, context.Conn))
+                {
+                    cmd.Parameters.AddWithValue("@namaBarang", namaBarang);
+                    try
+                    {
+                        return cmd.ExecuteScalar()?.ToString();
+                    }
+                    catch
+                    {
+                        return null;
+                    }
+                }
+            }
+        }
+
 
     }
 }

@@ -11,5 +11,19 @@ namespace Sistem_Manajemen_Inventori.Controller
 {
     public class HistoryController
     {
+        private HistoryRepository _repository;
+
+        public List<History> getRecentHistory()
+        {
+            List<History> list = new List<History>();
+
+            using (DbContext context = new DbContext())
+            {
+                _repository = new HistoryRepository(context);
+                list = _repository.getAllHistory();
+            }
+
+            return list;
+        }
     }
 }

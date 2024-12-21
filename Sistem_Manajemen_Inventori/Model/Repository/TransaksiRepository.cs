@@ -22,17 +22,17 @@ namespace Sistem_Manajemen_Inventori.Model.Repository
         public int Create(Transaksi transaksi)
         {
             int result = 0;
-            string sql = @"INSERT INTO Transaksi (nama_barang, nama_kategori, jumlah_transaksi, price_barang, tgl_transaksi, username) 
-                           VALUES (@nama_barang, @nama_kategori, @jumlah_transaksi, @price_barang, @tgl_transaksi, @username)";
+            //string sql = @"INSERT INTO Transaksi (nama_barang, nama_kategori, jumlah_transaksi, price_barang, tgl_transaksi, username) 
+            //               VALUES (@nama_barang, @nama_kategori, @jumlah_transaksi, @price_barang, @tgl_transaksi, @username)";
+
+            string sql = @"INSERT INTO Transaksi (id_barang, id_user, tgl_transaksi, id_kategori) VALUES (@id_barang, @id_user, @tgl_transaksi, @id_kategori)";
 
             using (SqlCommand cmd = new SqlCommand(sql, _conn))
             {
-                cmd.Parameters.AddWithValue("@nama_barang", transaksi.nama_barang);
-                cmd.Parameters.AddWithValue("@nama_kategori", transaksi.nama_kategori);
-                cmd.Parameters.AddWithValue("@jumlah_barang", transaksi.jumlah_transaksi);
-                cmd.Parameters.AddWithValue("@price_barang", transaksi.price_barang);
-                cmd.Parameters.AddWithValue("@tgl_transaksi", transaksi.tgl_transaksi);
-                cmd.Parameters.AddWithValue("@username", transaksi.username);
+                cmd.Parameters.AddWithValue("@id_barang", transaksi.Id_Barang);
+                cmd.Parameters.AddWithValue("@id_user", transaksi.Id_User);
+                cmd.Parameters.AddWithValue("@tgl_transaksi", transaksi.tgl_transaksi == DateTime.MinValue ? DateTime.Now : transaksi.tgl_transaksi);
+                cmd.Parameters.AddWithValue("@id_kategori", transaksi.Id_Kategori);
 
                 try
                 {
@@ -51,7 +51,17 @@ namespace Sistem_Manajemen_Inventori.Model.Repository
         public List<Transaksi> GetAll()
         {
             List<Transaksi> list = new List<Transaksi>();
-            string sql = "SELECT * FROM transaksi";
+            string sql = @"SELECT 
+                                b.Nama_Barang AS nama_barang, 
+                                k.Nama_Kategori AS nama_kategori, 
+                                t.Id_Transaksi AS jumlah_transaksi,
+                                b.Price_Barang AS price_barang, 
+                                t.Tgl_Transaksi AS tgl_transaksi, 
+                                u.Username AS username
+                            FROM Transaksi t
+                            JOIN Barang b ON t.Id_Barang = b.Id_Barang
+                            JOIN Kategori k ON t.Id_Kategori = k.Id_Kategori
+                            JOIN User_lr u ON t.Id_User = u.Id_User;";
 
             using (SqlCommand cmd = new SqlCommand(sql, _conn))
             {
@@ -120,5 +130,26 @@ namespace Sistem_Manajemen_Inventori.Model.Repository
 
             return list;
         }
+
+        public string GetIdBarangByName(string namaBarang)
+        {
+            using (DbContext context = new DbContext())
+            {
+                string query = "SELECT Id_Barang FROM Barang WHERE Nama_Barang = @namaBarang";
+                using (SqlCommand cmd = new SqlCommand(query, context.Conn))
+                {
+                    cmd.Parameters.AddWithValue("@namaBarang", namaBarang);
+                    try
+                    {
+                        return cmd.ExecuteScalar()?.ToString();
+                    }
+                    catch
+                    {
+                        return null;
+                    }
+                }
+            }
+        }
+
     }
 }
