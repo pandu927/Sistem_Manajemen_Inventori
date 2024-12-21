@@ -52,9 +52,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(103, 37);
+            this.label1.Location = new System.Drawing.Point(77, 30);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(178, 29);
+            this.label1.Size = new System.Drawing.Size(141, 25);
             this.label1.TabIndex = 3;
             this.label1.Text = "Total Category";
             // 
@@ -62,9 +63,10 @@
             // 
             this.lblTotalCategory.AutoSize = true;
             this.lblTotalCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalCategory.Location = new System.Drawing.Point(26, 23);
+            this.lblTotalCategory.Location = new System.Drawing.Point(20, 19);
+            this.lblTotalCategory.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTotalCategory.Name = "lblTotalCategory";
-            this.lblTotalCategory.Size = new System.Drawing.Size(53, 58);
+            this.lblTotalCategory.Size = new System.Drawing.Size(42, 46);
             this.lblTotalCategory.TabIndex = 2;
             this.lblTotalCategory.Text = "?";
             // 
@@ -75,45 +77,51 @@
             this.panel1.Controls.Add(this.btnEditCategory);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(0, 99);
+            this.panel1.Location = new System.Drawing.Point(0, 80);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(996, 572);
+            this.panel1.Size = new System.Drawing.Size(747, 465);
             this.panel1.TabIndex = 4;
             // 
             // btnDeleteCategory
             // 
-            this.btnDeleteCategory.Location = new System.Drawing.Point(811, 507);
+            this.btnDeleteCategory.Location = new System.Drawing.Point(608, 412);
+            this.btnDeleteCategory.Margin = new System.Windows.Forms.Padding(2);
             this.btnDeleteCategory.Name = "btnDeleteCategory";
-            this.btnDeleteCategory.Size = new System.Drawing.Size(155, 30);
+            this.btnDeleteCategory.Size = new System.Drawing.Size(116, 24);
             this.btnDeleteCategory.TabIndex = 5;
             this.btnDeleteCategory.Text = "Delete Category";
             this.btnDeleteCategory.UseVisualStyleBackColor = true;
             // 
             // btnEditCategory
             // 
-            this.btnEditCategory.Location = new System.Drawing.Point(418, 507);
+            this.btnEditCategory.Location = new System.Drawing.Point(314, 412);
+            this.btnEditCategory.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditCategory.Name = "btnEditCategory";
-            this.btnEditCategory.Size = new System.Drawing.Size(155, 30);
+            this.btnEditCategory.Size = new System.Drawing.Size(116, 24);
             this.btnEditCategory.TabIndex = 4;
             this.btnEditCategory.Text = "Edit Category";
             this.btnEditCategory.UseVisualStyleBackColor = true;
+            this.btnEditCategory.Click += new System.EventHandler(this.btnEditCategory_Click);
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.Controls.Add(this.lvwAllCategory);
             this.panel3.Controls.Add(this.panel4);
-            this.panel3.Location = new System.Drawing.Point(415, 51);
+            this.panel3.Location = new System.Drawing.Point(311, 41);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(551, 447);
+            this.panel3.Size = new System.Drawing.Size(413, 363);
             this.panel3.TabIndex = 1;
             // 
             // lvwAllCategory
             // 
             this.lvwAllCategory.HideSelection = false;
-            this.lvwAllCategory.Location = new System.Drawing.Point(3, 74);
+            this.lvwAllCategory.Location = new System.Drawing.Point(2, 60);
+            this.lvwAllCategory.Margin = new System.Windows.Forms.Padding(2);
             this.lvwAllCategory.Name = "lvwAllCategory";
-            this.lvwAllCategory.Size = new System.Drawing.Size(545, 370);
+            this.lvwAllCategory.Size = new System.Drawing.Size(410, 301);
             this.lvwAllCategory.TabIndex = 1;
             this.lvwAllCategory.UseCompatibleStateImageBehavior = false;
             // 
@@ -122,8 +130,9 @@
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(85)))), ((int)(((byte)(83)))));
             this.panel4.Controls.Add(this.label2);
             this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(551, 68);
+            this.panel4.Size = new System.Drawing.Size(413, 55);
             this.panel4.TabIndex = 0;
             // 
             // label2
@@ -131,9 +140,10 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(177, 21);
+            this.label2.Location = new System.Drawing.Point(133, 17);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(169, 32);
+            this.label2.Size = new System.Drawing.Size(131, 26);
             this.label2.TabIndex = 0;
             this.label2.Text = "All Category";
             // 
@@ -143,16 +153,18 @@
             this.panel2.Controls.Add(this.txtCategory);
             this.panel2.Controls.Add(this.btnSave);
             this.panel2.Controls.Add(this.label5);
-            this.panel2.Location = new System.Drawing.Point(36, 51);
+            this.panel2.Location = new System.Drawing.Point(27, 41);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(344, 486);
+            this.panel2.Size = new System.Drawing.Size(258, 395);
             this.panel2.TabIndex = 0;
             // 
             // txtCategory
             // 
-            this.txtCategory.Location = new System.Drawing.Point(41, 137);
+            this.txtCategory.Location = new System.Drawing.Point(31, 111);
+            this.txtCategory.Margin = new System.Windows.Forms.Padding(2);
             this.txtCategory.Name = "txtCategory";
-            this.txtCategory.Size = new System.Drawing.Size(269, 22);
+            this.txtCategory.Size = new System.Drawing.Size(203, 20);
             this.txtCategory.TabIndex = 9;
             // 
             // btnSave
@@ -160,41 +172,47 @@
             this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(85)))), ((int)(((byte)(83)))));
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(101, 401);
+            this.btnSave.Location = new System.Drawing.Point(76, 326);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(144, 46);
+            this.btnSave.Size = new System.Drawing.Size(108, 37);
             this.btnSave.TabIndex = 8;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(37, 114);
+            this.label5.Location = new System.Drawing.Point(28, 93);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(76, 20);
+            this.label5.Size = new System.Drawing.Size(65, 17);
             this.label5.TabIndex = 5;
             this.label5.Text = "Category";
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(702, 44);
+            this.txtSearch.Location = new System.Drawing.Point(526, 36);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(2);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(264, 22);
+            this.txtSearch.Size = new System.Drawing.Size(199, 20);
             this.txtSearch.TabIndex = 6;
             this.txtSearch.Text = "Search";
             // 
             // frmTransaction
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblTotalCategory);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmTransaction";
-            this.Size = new System.Drawing.Size(996, 671);
+            this.Size = new System.Drawing.Size(747, 545);
+            this.Load += new System.EventHandler(this.frmTransaction_Load);
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);

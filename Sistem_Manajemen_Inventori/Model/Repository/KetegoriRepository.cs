@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using Sistem_Manajemen_Inventori.Model.Entity;
 using Sistem_Manajemen_Inventori.Model.Contex;
 using System.Drawing;
+using System.Diagnostics;
 
 namespace Sistem_Manajemen_Inventori.Model.Repository
 {
@@ -37,8 +38,8 @@ namespace Sistem_Manajemen_Inventori.Model.Repository
                     while (dtr.Read())
                     {
                         _kategori = new Kategori();
-                        _kategori.id_kategori = int.Parse(dtr["id_kategori"].ToString());
-                        _kategori.nama_kategori = dtr["Nama_Kategori"].ToString();
+                        _kategori.id_kategori = dtr["id_kategori"].ToString();
+                        _kategori.nama_kategori = dtr["nama_Kategori"].ToString();
                         _kategori.jumlah_kategori = int.Parse(dtr["jumlah"].ToString());
                         list.Add(_kategori);
                     }
@@ -53,13 +54,13 @@ namespace Sistem_Manajemen_Inventori.Model.Repository
         {
             int result = 0;
 
-            string sql = "INSERT INTO Kategori(id_kategori, nama_kategori, Jumlah_kategori) VALUES(@id_kategori, @nama_kategori, @jumlah_kategori)";
+            string sql = "INSERT INTO Kategori(Id_Kategori, Nama_Kategori, Jumlah) VALUES(@Id_Kategori, @Nama_Kategori, @Jumlah)";
 
             using (SqlCommand cmd = new SqlCommand(sql, _cnn))
             {
-                cmd.Parameters.AddWithValue("@nama_Kategori", kategori.nama_kategori);
-                cmd.Parameters.AddWithValue("@id_kategori", kategori.id_kategori);
-                cmd.Parameters.AddWithValue("@jumlah_kategori", kategori.jumlah_kategori);
+                cmd.Parameters.AddWithValue("@Id_Kategori", kategori.id_kategori);
+                cmd.Parameters.AddWithValue("@Nama_Kategori", kategori.nama_kategori);
+                cmd.Parameters.AddWithValue("@Jumlah", kategori.jumlah_kategori);
 
                 try
                 {
@@ -123,5 +124,63 @@ namespace Sistem_Manajemen_Inventori.Model.Repository
 
         }
 
+        public string GetIdKategoriByName(Kategori category)
+        {
+            using (DbContext context = new DbContext())
+            {
+                string query = "SELECT Id_Kategori FROM Kategori WHERE Nama_Kategori = @namaKategori";
+                using (SqlCommand cmd = new SqlCommand(query, context.Conn))
+                {
+                    cmd.Parameters.AddWithValue("@namaKategori", category.nama_kategori);
+                    try
+                    {
+                        return cmd.ExecuteScalar()?.ToString();
+                    }
+                    catch
+                    {
+                        return null;
+                    }
+                }
+            }
+        }
+
+        public string UpdateCategory(Kategori category)
+        {
+            string resultMessage = string.Empty;
+
+            using (DbContext context = new DbContext())
+            {
+                string sql = @"UPDATE Kategori 
+                       SET Nama_Kategori = @NamaKategoriBaru 
+                       WHERE Id_Kategori = @IdKategori";
+
+                using (SqlCommand cmd = new SqlCommand(sql, context.Conn))
+                {
+                    cmd.Parameters.AddWithValue("@NamaKategoriBaru", category.nama_kategori);
+                    cmd.Parameters.AddWithValue("@IdKategori", category.id_kategori);
+
+                    try
+                    {
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            resultMessage = "Kategori berhasil diperbarui.";
+                        }
+                        else
+                        {
+                            resultMessage = "Kategori tidak ditemukan atau tidak ada perubahan.";
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        resultMessage = $"Terjadi kesalahan: {ex.Message}";
+                        System.Diagnostics.Debug.Print("UpdateCategory error: {0}", ex.Message);
+                    }
+                }
+            }
+
+            return resultMessage;
+        }
     }
 }

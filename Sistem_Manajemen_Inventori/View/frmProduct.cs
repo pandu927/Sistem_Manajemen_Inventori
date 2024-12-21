@@ -20,7 +20,7 @@ namespace Sistem_Manajemen_Inventori.View
         {
             InitializeComponent();
             InitializeListView();
-            loadData();
+            //loadData();
         }
 
         private void InitializeListView()
