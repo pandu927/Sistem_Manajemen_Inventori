@@ -25,5 +25,18 @@ namespace Sistem_Manajemen_Inventori.Controller
 
             return list;
         }
+
+        public List<History> getHistoryByProductName(string productName)
+        {
+            List<History> list = new List<History>();
+
+            using (DbContext context = new DbContext())
+            {
+                _repository = new HistoryRepository(context);
+                list = _repository.getHistoryByProductName(productName);
+            }
+
+            return list;
+        }
     }
 }

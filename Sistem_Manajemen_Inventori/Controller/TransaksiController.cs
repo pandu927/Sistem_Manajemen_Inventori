@@ -52,5 +52,18 @@ namespace Sistem_Manajemen_Inventori.Controller
 
             return result;
         }
+
+        internal List<Transaksi> getHistoryByProductName(string productName)
+        {
+            List<Transaksi> list = new List<Transaksi>();
+
+            using (DbContext context = new DbContext())
+            {
+                _repository = new TransaksiRepository(context);
+                list = _repository.Search(productName);
+            }
+
+            return list;
+        }
     }
 }

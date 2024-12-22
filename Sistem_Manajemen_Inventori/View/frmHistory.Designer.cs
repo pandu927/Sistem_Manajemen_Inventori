@@ -50,11 +50,12 @@
             // txtSearch
             // 
             this.txtSearch.Location = new System.Drawing.Point(519, 45);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(2);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(199, 20);
             this.txtSearch.TabIndex = 2;
             this.txtSearch.Text = "Search";
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // panel1
             // 
@@ -62,7 +63,7 @@
             this.panel1.Controls.Add(this.btnExportToExcel);
             this.panel1.Controls.Add(this.lvwHistory);
             this.panel1.Location = new System.Drawing.Point(0, 84);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(746, 461);
             this.panel1.TabIndex = 3;
@@ -70,18 +71,19 @@
             // btnExportToExcel
             // 
             this.btnExportToExcel.Location = new System.Drawing.Point(587, 425);
-            this.btnExportToExcel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnExportToExcel.Margin = new System.Windows.Forms.Padding(2);
             this.btnExportToExcel.Name = "btnExportToExcel";
             this.btnExportToExcel.Size = new System.Drawing.Size(128, 24);
             this.btnExportToExcel.TabIndex = 1;
             this.btnExportToExcel.Text = "Export To Excel";
             this.btnExportToExcel.UseVisualStyleBackColor = true;
+            this.btnExportToExcel.Click += new System.EventHandler(this.btnExportToExcel_Click);
             // 
             // lvwHistory
             // 
             this.lvwHistory.HideSelection = false;
             this.lvwHistory.Location = new System.Drawing.Point(32, 20);
-            this.lvwHistory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lvwHistory.Margin = new System.Windows.Forms.Padding(2);
             this.lvwHistory.Name = "lvwHistory";
             this.lvwHistory.Size = new System.Drawing.Size(686, 401);
             this.lvwHistory.TabIndex = 0;
@@ -94,7 +96,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmHistory";
             this.Size = new System.Drawing.Size(747, 545);
             this.Load += new System.EventHandler(this.frmHistory_Load);

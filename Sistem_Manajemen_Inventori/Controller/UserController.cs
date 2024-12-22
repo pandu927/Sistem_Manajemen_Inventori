@@ -31,41 +31,41 @@ namespace Sistem_Manajemen_Inventori.Controller
         {
             int result = 0;
 
-            //if (string.IsNullOrEmpty(user.username) && string.IsNullOrEmpty(user.password))
-            //{
-            //    MessageBox.Show("Username and Password cannot be empty", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return 0;
-            //}
+            if (string.IsNullOrEmpty(user.username) && string.IsNullOrEmpty(user.password))
+            {
+                MessageBox.Show("Username and Password cannot be empty", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+            }
 
-            //if (string.IsNullOrEmpty(user.username))
-            //{
-            //    MessageBox.Show("Username cannot be empty", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return 0;
-            //}
-            //if (string.IsNullOrEmpty(user.password))
-            //{
-            //    MessageBox.Show("Password cannot be empty", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return 0;
-            //}
+            if (string.IsNullOrEmpty(user.username))
+            {
+                MessageBox.Show("Username cannot be empty", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+            }
+            if (string.IsNullOrEmpty(user.password))
+            {
+                MessageBox.Show("Password cannot be empty", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+            }
 
-            //using (DbContext context = new DbContext())
-            //{
-            //    _repository = new UserRepository(context);
-            //    result = _repository.checkUserAdmin(user);
-            //}
+            using (DbContext context = new DbContext())
+            {
+                _repository = new UserRepository(context);
+                result = _repository.checkUserAdmin(user);
+            }
 
-            //if (result == 0)
-            //{
-            //    MessageBox.Show("Data not found, login failed", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
-            //else
-            //{
+            if (result == 0)
+            {
+                MessageBox.Show("Data not found, login failed", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
                 MessageBox.Show("Data found, login successful", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Dashboard dashboard = new Dashboard();
                 dashboard.Show();
-            //}
+            }
 
-            return result = 1;
+            return result;
         }
     }
 }
