@@ -18,7 +18,6 @@ namespace Sistem_Manajemen_Inventori.View
         }       
         private void Dashboard_Load(object sender, EventArgs e)
         {
-
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
@@ -32,12 +31,37 @@ namespace Sistem_Manajemen_Inventori.View
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
-
+            frmDasboard dashboard = new frmDasboard();
+            this.Controls.Add(dashboard);
+            dashboard.Dock = DockStyle.Right;
         }
 
         private void btnCategory_Click(object sender, EventArgs e)
         {
-            // ini adalah contoh
+            frmTransaction category = new frmTransaction();
+            this.Controls.Add(category);
+            category.Dock = DockStyle.Right;
+        }
+
+        private void btnProduct_Click(object sender, EventArgs e)
+        {
+            frmProduct product = new frmProduct();
+            this.Controls.Add(product);
+            product.Dock = DockStyle.Right;
+        }
+
+        private void btnTransaction_Click(object sender, EventArgs e)
+        {
+            frmTransactions transaction = new frmTransactions();
+            this.Controls.Add(transaction);
+            transaction.Dock = DockStyle.Right;
+        }
+
+        private void btnHistory_Click(object sender, EventArgs e)
+        {
+            frmHistory history = new frmHistory();
+            this.Controls.Add(history);
+            history.Dock = DockStyle.Right;
         }
     }
 }

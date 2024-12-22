@@ -23,8 +23,20 @@ namespace Sistem_Manajemen_Inventori.Model.Repository
             List<History> list = new List<History>();
             try
             {
-                string sql = @"SELECT id_history, nama_barang, id_Transaksi, nama_kategori, username, tgl_masuk, tgl_transaksi 
-                       FROM History";
+                string sql = @"SELECT 
+                                    h.id_history, 
+                                    b.nama_barang, 
+                                    t.id_transaksi, 
+                                    k.nama_kategori, 
+                                    u.username, 
+                                    b.tgl_masuk, 
+                                    t.tgl_transaksi
+                                FROM History AS h
+                                JOIN Barang AS b ON h.id_barang = b.id_barang
+                                JOIN Transaksi AS t ON h.id_transaksi = t.id_transaksi
+                                JOIN Kategori AS k ON h.id_kategori = k.id_kategori
+                                JOIN User_lr AS u ON t.id_user = u.id_user;
+";
 
                 using (SqlCommand cmd = new SqlCommand(sql, _conn))
                 {

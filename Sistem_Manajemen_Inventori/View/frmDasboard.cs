@@ -44,6 +44,7 @@ namespace Sistem_Manajemen_Inventori.View
         private void LoadData()
         {
             barangController = new BarangController();
+            kategoriController = new KategoriController();
 
             lblTotalProduct.Text = barangController.getTotalProduct().ToString();
             lblTotalCategory.Text = kategoriController.getTotalCategory().ToString();
