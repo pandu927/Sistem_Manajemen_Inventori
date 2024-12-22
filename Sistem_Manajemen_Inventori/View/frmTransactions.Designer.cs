@@ -70,6 +70,7 @@
             this.txtSearch.Size = new System.Drawing.Size(199, 20);
             this.txtSearch.TabIndex = 1;
             this.txtSearch.Text = "Search";
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // panel2
             // 

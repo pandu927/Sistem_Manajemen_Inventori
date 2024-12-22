@@ -96,12 +96,26 @@ namespace Sistem_Manajemen_Inventori.Model.Repository
         // SEARCH transaksi berdasarkan Nama_Barang
         public List<Transaksi> Search(string namaBarang)
         {
+
+            Console.WriteLine(namaBarang);
+
             List<Transaksi> list = new List<Transaksi>();
-            string sql = @"SELECT * FROM transaksi WHERE nama_barang LIKE @nama_barang";
+            string sql = @"SELECT 
+                            b.Nama_Barang AS nama_barang, 
+                            k.Nama_Kategori AS nama_kategori, 
+                            t.Id_Transaksi AS jumlah_transaksi,
+                            b.Price_Barang AS price_barang, 
+                            t.Tgl_Transaksi AS tgl_transaksi, 
+                            u.Username AS username
+                        FROM Transaksi t
+                        JOIN Barang b ON t.Id_Barang = b.Id_Barang
+                        JOIN Kategori k ON t.Id_Kategori = k.Id_Kategori
+                        JOIN User_lr u ON t.Id_User = u.Id_User
+                        WHERE b.nama_barang Like @nama_barang;";
 
             using (SqlCommand cmd = new SqlCommand(sql, _conn))
             {
-                cmd.Parameters.AddWithValue("@nama_barang", "%" + namaBarang + "%");
+                cmd.Parameters.AddWithValue("@nama_barang", namaBarang + "%");
 
                 try
                 {
@@ -109,14 +123,16 @@ namespace Sistem_Manajemen_Inventori.Model.Repository
                     {
                         while (dtr.Read())
                         {
+
+                            Console.WriteLine();
                             Transaksi transaksi = new Transaksi
                             {
-                                nama_barang = dtr["Nama_Barang"].ToString(),
+                                nama_barang = dtr["nama_barang"].ToString(),
                                 nama_kategori = dtr["Nama_Kategori"].ToString(),
-                                jumlah_transaksi = Convert.ToInt32(dtr["Quantity"]),
-                                price_barang = Convert.ToInt32(dtr["Price"]),
+                                //jumlah_transaksi = Convert.ToInt32(dtr["Quantity"]),
+                                //price_barang = Convert.ToInt32(dtr["Price"]),
                                 tgl_transaksi = Convert.ToDateTime(dtr["Tgl_Transaksi"]),
-                                username = dtr["Username"].ToString()
+                                //username = dtr["Username"].ToString()
                             };
                             list.Add(transaksi);
                         }

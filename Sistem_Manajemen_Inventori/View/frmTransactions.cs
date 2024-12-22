@@ -39,7 +39,7 @@ namespace Sistem_Manajemen_Inventori.View
 
             lvwAllTransactions.Columns.Add("Product", 100, HorizontalAlignment.Left);
             lvwAllTransactions.Columns.Add("Category", 100, HorizontalAlignment.Left);
-            lvwAllTransactions.Columns.Add("Quantity", 100, HorizontalAlignment.Left);
+            //lvwAllTransactions.Columns.Add("Quantity", 100, HorizontalAlignment.Left);
             lvwAllTransactions.Columns.Add("Date", 100, HorizontalAlignment.Left);
         }
 
@@ -47,17 +47,7 @@ namespace Sistem_Manajemen_Inventori.View
         {
             _controller = new TransaksiController();
             listTransaksi = _controller.getRecentTransaksi();
-            lvwAllTransactions.Items.Clear();
-
-            foreach (Transaksi transaksi in listTransaksi)
-            {
-                ListViewItem item = new ListViewItem(transaksi.nama_barang);
-                item.SubItems.Add(transaksi.nama_kategori);
-                item.SubItems.Add(transaksi.jumlah_transaksi.ToString());
-                item.SubItems.Add(transaksi.tgl_transaksi.ToShortDateString());
-
-                lvwAllTransactions.Items.Add(item);
-            }
+            DisplayData(listTransaksi);
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -150,9 +140,38 @@ namespace Sistem_Manajemen_Inventori.View
             }
         }
 
+        private void DisplayData(List<Transaksi> transactions)
+        {
+            lvwAllTransactions.Items.Clear();
+
+            foreach (Transaksi transaksi in transactions)
+            {
+                ListViewItem item = new ListViewItem(transaksi.nama_barang);
+                item.SubItems.Add(transaksi.nama_kategori);
+                //item.SubItems.Add(transaksi.jumlah_transaksi.ToString());
+                item.SubItems.Add(transaksi.tgl_transaksi.ToShortDateString());
+
+                lvwAllTransactions.Items.Add(item);
+            }
+        }
+
         private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            string productName = txtSearch.Text.Trim();
+            if (string.IsNullOrEmpty(productName))
+            {
+                LoadData();
+            }
+            else
+            {
+                List<Transaksi> filteredHistories = _controller.getHistoryByProductName(productName);
+                DisplayData(filteredHistories);
+            }
         }
     }
 }
