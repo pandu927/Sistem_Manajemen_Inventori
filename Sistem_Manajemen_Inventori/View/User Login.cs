@@ -14,9 +14,14 @@ namespace Sistem_Manajemen_Inventori.View
 {
     public partial class User_Login : Form
     {
+        private UserController _controller;
+        private User user;
+        public static string getName;
+        public static int getUserId;
         public User_Login()
         {
             InitializeComponent();
+            _controller = new UserController();
         }
 
         private void txtEnterEmail_TextChanged(object sender, EventArgs e)
@@ -26,25 +31,41 @@ namespace Sistem_Manajemen_Inventori.View
 
         private void lnkCreate_Account_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MessageBox.Show("Fitur registrasi belum diimplementasikan.");
+            User_Sign_Up signUp = new User_Sign_Up();
+            signUp.Show();
+            this.Hide();
         }
 
         private void txtEnterPassword_TextChanged(object sender, EventArgs e)
         {
+            txtEnterPassword.UseSystemPasswordChar = true;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            User user = new User()
+            user = new User();
+
+            user.username = txtUsername.Text;
+            user.password = txtEnterPassword.Text;
+
+            int result = _controller.Login(user);
+
+            if (result > 0)
             {
-                username = txtEnterEmail.Text,
-                password = txtEnterPassword.Text
-            };
+                getName = _controller.getName(txtUsername.Text);
+                getUserId = int.Parse(_controller.getUserId(txtUsername.Text));
 
-            UserController _usersControler = new UserController();
-            int result = _usersControler.checkUserAdmin(user);
+                Dashboard userLogin = new Dashboard();
+                userLogin.Show();
+                this.Hide();
 
-            if (result > 0) this.Hide();
+            }
+            else
+            {
+                txtUsername.Text = "";
+                txtEnterPassword.Text = "";
+                txtUsername.Focus();
+            }
         }
 
         private void User_Login_Load(object sender, EventArgs e)
