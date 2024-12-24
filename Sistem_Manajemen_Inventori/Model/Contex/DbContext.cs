@@ -29,7 +29,7 @@ namespace Sistem_Manajemen_Inventori.Model.Contex
             try
             {
                 string dbName = @"D:\Project pemroh\Sistem_Manajemen_Inventori\Database\database.db";
-                string connectionString = string.Format("Data Source={0};FailIfMissing=True", dbName);
+                string connectionString = string.Format("Data Source ={0}; FailIfMissing = True", dbName);
 
                 conn = new SQLiteConnection(connectionString);
                 conn.Open(); // Buka koneksi

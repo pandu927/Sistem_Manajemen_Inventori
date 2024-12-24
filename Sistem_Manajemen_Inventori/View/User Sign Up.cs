@@ -15,47 +15,63 @@ namespace Sistem_Manajemen_Inventori.View
     public partial class User_Sign_Up : Form
     {
         private UserController _controller;
+
         public User_Sign_Up()
         {
             InitializeComponent();
             _controller = new UserController();
-            txtConPass.UseSystemPasswordChar = true;
-            txtPassword.UseSystemPasswordChar = true;
+            txtConPass.UseSystemPasswordChar = true; // Sembunyikan input password
+            txtPassword.UseSystemPasswordChar = true; // Sembunyikan input konfirmasi password
         }
 
         private void btnSignUp_Click(object sender, EventArgs e)
         {
+            // Validasi apakah Password dan Konfirmasi Password sesuai
             if (txtPassword.Text == txtConPass.Text)
             {
-                User user = new User();
-
-                user.username = txtUsername.Text;
-                user.email = txtEmail.Text;
-                user.password = txtPassword.Text;
-
-                int result = _controller.SignUp(user);
-                bool valid = _controller.usernameValidasi(user.username);
-
-                if (result > 0)
+                // Buat objek User dari input
+                var user = new User
                 {
-                    User_Login login = new User_Login();
-                    login.Show();
-                    this.Close();
-                }
+                    username = txtUsername.Text,
+                    email = txtEmail.Text,
+                    password = txtPassword.Text
+                };
 
-                if (valid == false)
+                // Cek validasi username
+                bool valid = _controller.UsernameValidasi(user.username);
+                if (!valid)
                 {
                     MessageBox.Show("Username sudah digunakan, silakan pilih username lain.", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtUsername.Text = "";
                     txtUsername.Focus();
+                    return;
+                }
+
+                // Proses sign up melalui controller
+                int result = _controller.SignUp(user);
+
+                if (result > 0)
+                {
+                    MessageBox.Show("Pendaftaran berhasil! Silakan login.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Pindah ke halaman login
+                    User_Login login = new User_Login();
+                    login.Show();
+                    this.Close(); // Tutup form sign up
+                }
+                else
+                {
+                    MessageBox.Show("Pendaftaran gagal. Silakan coba lagi.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Password Tidak Sama!!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Jika password dan konfirmasi tidak sama
+                MessageBox.Show("Password dan Konfirmasi Password tidak sama!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtConPass.Text = "";
                 txtConPass.Focus();
             }
         }
     }
 }
+

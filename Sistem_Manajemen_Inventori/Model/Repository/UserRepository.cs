@@ -14,213 +14,112 @@ namespace Sistem_Manajemen_Inventori.Model.Repository
     public class UserRepository
     {
         private SQLiteConnection _cnn;
-        private User user;
 
         public UserRepository(DbContext context)
         {
             _cnn = context.Conn;
         }
 
-            public bool DaftarValidasi(string username)
-            {
-                bool valid = false;
-                try
-                {
-                    string sql = "SELECT Username FROM user_lr WHERE Username = @Username";
-                    using (SQLiteCommand cmd = new SQLiteCommand(sql, _cnn))
-                    {
-                        cmd.Parameters.AddWithValue("@Username", username);
-                        using (SQLiteDataReader reader = cmd.ExecuteReader())
-                        {
-                            valid = reader.Read();
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    System.Diagnostics.Debug.Print("Get User and Pass Error: {0}", ex.Message);
-                }
-                return valid;
-            }
-
-            // method signUp
-            public int signUp(User usrSIgnUp)
-            {
-                int result = 0;
-                string sql = "INSERT INTO User_lr(id_User, username, password, email) VALUES (@id_user, @username, @password, @email)";
-
-                using (SQLiteCommand cmd = new SQLiteCommand(sql, _cnn))
-                {
-                    cmd.Parameters.AddWithValue("@id_user", usrSIgnUp.id_user);
-                    cmd.Parameters.AddWithValue("@username", usrSIgnUp.username);
-                    cmd.Parameters.AddWithValue("@password", usrSIgnUp.password);
-                    cmd.Parameters.AddWithValue("@email", usrSIgnUp.email);
-
-                    try
-                    {
-                        result = cmd.ExecuteNonQuery();
-                    }
-                    catch (Exception ex)
-                    {
-                        System.Diagnostics.Debug.Print("Create error: {0}", ex.Message);
-                    }
-                }
-                return result;
-            }
-
-            // method untuk melakukan login
-            public int Login(User usrLogin)
-            {
-                int result = 0;
-                string sql = "SELECT COUNT(1) FROM user_lr WHERE username = @username AND password = @password";
-                using (SQLiteCommand cmd = new SQLiteCommand(sql, _cnn))
-                {
-                    cmd.Parameters.AddWithValue("@username", usrLogin.username);
-                    cmd.Parameters.AddWithValue("@password", usrLogin.password);
-
-                    try
-                    {
-                        result = Convert.ToInt32(cmd.ExecuteScalar());
-                    }
-                    catch (Exception ex)
-                    {
-                        System.Diagnostics.Debug.Print("Create error: {0}", ex.Message);
-                    }
-                }
-                return result;
-            }
-
-        // membaca user id
-        public string readName(string username)
+        public bool DaftarValidasi(string username)
         {
-            string userId = null;
-            string sql = "SELECT nama FROM user_lr WHERE username = @username";
+            string sql = "SELECT Username FROM user_lr WHERE Username = @Username LIMIT 1";
+            using (SQLiteCommand cmd = new SQLiteCommand(sql, _cnn))
+            {
+                cmd.Parameters.AddWithValue("@Username", username);
+                using (SQLiteDataReader reader = cmd.ExecuteReader())
+                {
+                    return reader.Read();
+                }
+            }
+        }
 
+        public int SignUp(User user)
+        {
+            string sql = "INSERT INTO user_lr(username, password, email) VALUES (@username, @password, @email)";
+            using (SQLiteCommand cmd = new SQLiteCommand(sql, _cnn))
+            {
+                cmd.Parameters.AddWithValue("@username", user.username);
+                cmd.Parameters.AddWithValue("@password", user.password);
+                cmd.Parameters.AddWithValue("@email", user.email);
+
+                return cmd.ExecuteNonQuery();
+            }
+        }
+
+        public int Login(User user)
+        {
+            string sql = "SELECT COUNT(1) FROM user_lr WHERE username = @username AND password = @password";
+            using (SQLiteCommand cmd = new SQLiteCommand(sql, _cnn))
+            {
+                cmd.Parameters.AddWithValue("@username", user.username);
+                cmd.Parameters.AddWithValue("@password", user.password);
+
+                return Convert.ToInt32(cmd.ExecuteScalar());
+            }
+        }
+
+        public string ReadUserId(string username)
+        {
+            string sql = "SELECT id_user FROM user_lr WHERE username = @username LIMIT 1";
             using (SQLiteCommand cmd = new SQLiteCommand(sql, _cnn))
             {
                 cmd.Parameters.AddWithValue("@username", username);
-
-                SQLiteDataReader dtr = cmd.ExecuteReader();
-                if (dtr.Read())
+                using (SQLiteDataReader reader = cmd.ExecuteReader())
                 {
-                    userId = dtr["id_user"].ToString();
+                    return reader.Read() ? reader["id_user"].ToString() : null;
                 }
             }
-
-            return userId;
         }
 
-        // membaca user id
-        public string readUserId(string username)
+        public List<User> UserData(int userId)
+        {
+            List<User> list = new List<User>();
+            string sql = "SELECT * FROM user_lr WHERE id_user = @id_user";
+
+            using (SQLiteCommand cmd = new SQLiteCommand(sql, _cnn))
             {
-                string userId = null;
-                string sql = "SELECT id_user FROM user_lr WHERE username = @username";
-
-                using (SQLiteCommand cmd = new SQLiteCommand(sql, _cnn))
+                cmd.Parameters.AddWithValue("@id_user", userId);
+                using (SQLiteDataReader reader = cmd.ExecuteReader())
                 {
-                    cmd.Parameters.AddWithValue("@username", username);
-
-                    using (SQLiteDataReader dtr = cmd.ExecuteReader())
+                    while (reader.Read())
                     {
-                        if (dtr.Read())
+                        list.Add(new User
                         {
-                            userId = dtr["id_user"].ToString();
-                        }
+                            id_user = Convert.ToInt32(reader["id_user"]),
+                            username = reader["username"].ToString(),
+                            password = reader["password"].ToString(),
+                            email = reader["email"].ToString()
+                        });
                     }
                 }
-
-                return userId;
             }
 
-            // menampilkan user yang sedang login
-            public List<User> userData(int id_user)
+            return list;
+        }
+
+        public int UpdateAcc(User user, int userId)
+        {
+            string sql = "UPDATE user_lr SET username = @username, password = @password, email = @email WHERE id_user = @id_user";
+            using (SQLiteCommand cmd = new SQLiteCommand(sql, _cnn))
             {
-                List<User> list = new List<User>(); // Menggunakan tipe data User
+                cmd.Parameters.AddWithValue("@id_user", userId);
+                cmd.Parameters.AddWithValue("@username", user.username);
+                cmd.Parameters.AddWithValue("@password", user.password);
+                cmd.Parameters.AddWithValue("@email", user.email);
 
-                try
-                {
-                    string sql = "SELECT * FROM User_lr WHERE id_user = @id_user";
-
-                    using (SQLiteCommand cmd = new SQLiteCommand(sql, _cnn))
-                    {
-                        cmd.Parameters.AddWithValue("@id_user", id_user);
-
-                        using (SQLiteDataReader dtr = cmd.ExecuteReader())
-                        {
-                            while (dtr.Read())
-                            {
-                                user = new User();
-                                user.id_user = int.Parse(dtr["id_user"].ToString());
-                                user.username = dtr["username"].ToString();
-                                user.password = dtr["password"].ToString();
-                                user.email = dtr["email"].ToString();
-
-                                list.Add(user);
-                            }
-                        }
-                    }
-
-                }
-                catch (Exception ex)
-                {
-                    System.Diagnostics.Debug.Print("Error: {0}", ex.Message);
-
-                }
-
-                return list;
+                return cmd.ExecuteNonQuery();
             }
+        }
 
-            // update profile
-            public int updateAcc(User usr, int userId)
+        public int DeleteAcc(int userId)
+        {
+            string sql = "DELETE FROM user_lr WHERE id_user = @id_user";
+            using (SQLiteCommand cmd = new SQLiteCommand(sql, _cnn))
             {
-                int result = 0;
-                string sql = "UPDATE User_lr SET username = @username, password = @password, email = @email WHERE id_user = @id_user";
-
-                using (SQLiteCommand cmd = new SQLiteCommand(sql, _cnn))
-                {
-                    cmd.Parameters.AddWithValue("@id_user", userId);
-                    cmd.Parameters.AddWithValue("@username", usr.username);
-                    cmd.Parameters.AddWithValue("@password", usr.password);
-                    cmd.Parameters.AddWithValue("@email", usr.email);
-
-                    try
-                    {
-                        result = cmd.ExecuteNonQuery();
-                    }
-                    catch (Exception ex)
-                    {
-                        System.Diagnostics.Debug.Print("Error: {0}", ex.Message);
-                    }
-                }
-
-                return result;
+                cmd.Parameters.AddWithValue("@id_user", userId);
+                return cmd.ExecuteNonQuery();
             }
-        // hapus account
-        public int deleteAcc(int userId)
-            {
-                int result = 0;
-                string sql = "DELETE FROM user_lr WHERE id_user = @id_user";
-
-                using (SQLiteCommand cmd = new SQLiteCommand(sql, _cnn))
-                {
-                    cmd.Parameters.AddWithValue("@id_user", userId);
-
-                    try
-                    {
-                        result = cmd.ExecuteNonQuery();
-                    }
-                    catch (Exception ex)
-                    {
-                        System.Diagnostics.Debug.Print("Error: {0}", ex.Message);
-                    }
-                }
-
-                return result;
-            }
-
-            
+        }
     }
 }
-
-
 
