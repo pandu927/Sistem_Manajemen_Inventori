@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
+using System.Data.SQLite;
 using Sistem_Manajemen_Inventori.Model.Entity;
 using Sistem_Manajemen_Inventori.Model.Contex;
 
@@ -11,7 +11,7 @@ namespace Sistem_Manajemen_Inventori.Model.Repository
 {
     public class HistoryRepository
     {
-        private SqlConnection _conn;
+        private SQLiteConnection _conn;
 
         public HistoryRepository(DbContext context)
         {
@@ -38,9 +38,9 @@ namespace Sistem_Manajemen_Inventori.Model.Repository
                                 JOIN User_lr AS u ON t.id_user = u.id_user;
 ";
 
-                using (SqlCommand cmd = new SqlCommand(sql, _conn))
+                using (SQLiteCommand cmd = new SQLiteCommand(sql, _conn))
                 {
-                    using (SqlDataReader dtr = cmd.ExecuteReader())
+                    using (SQLiteDataReader dtr = cmd.ExecuteReader())
                     {
                         while (dtr.Read())
                         {
@@ -79,11 +79,11 @@ namespace Sistem_Manajemen_Inventori.Model.Repository
                 string sql = @"SELECT id_history, nama_barang, id_transaksi, nama_kategori, username, tgl_Masuk, tgl_Transaksi 
                        FROM history WHERE id_history LIKE @id_history";
 
-                using (SqlCommand cmd = new SqlCommand(sql, _conn))
+                using (SQLiteCommand cmd = new SQLiteCommand(sql, _conn))
                 {
                     cmd.Parameters.AddWithValue("@id_History", idHistory + '%');
 
-                    using (SqlDataReader dtr = cmd.ExecuteReader())
+                    using (SQLiteDataReader dtr = cmd.ExecuteReader())
                     {
                         while (dtr.Read())
                         {
@@ -132,11 +132,11 @@ namespace Sistem_Manajemen_Inventori.Model.Repository
                                 JOIN User_lr AS u ON t.id_user = u.id_user
                                 WHERE b.nama_barang LIKE @nama_barang";
 
-                using (SqlCommand cmd = new SqlCommand(sql, _conn))
+                using (SQLiteCommand cmd = new SQLiteCommand(sql, _conn))
                 {
                     cmd.Parameters.AddWithValue("@nama_barang", productName + '%');
 
-                    using (SqlDataReader dtr = cmd.ExecuteReader())
+                    using (SQLiteDataReader dtr = cmd.ExecuteReader())
                     {
                         while (dtr.Read())
                         {

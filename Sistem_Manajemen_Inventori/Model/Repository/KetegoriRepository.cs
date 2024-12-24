@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
+using System.Data.SQLite;
 using Sistem_Manajemen_Inventori.Model.Entity;
 using Sistem_Manajemen_Inventori.Model.Contex;
 using System.Drawing;
@@ -13,7 +13,7 @@ namespace Sistem_Manajemen_Inventori.Model.Repository
 {
     public class KetegoriRepository
     {
-        private SqlConnection _cnn;
+        private SQLiteConnection _cnn;
 
         private Kategori _kategori;
 
@@ -31,9 +31,9 @@ namespace Sistem_Manajemen_Inventori.Model.Repository
 
             string sql = "SELECT * FROM Kategori";
 
-            using (SqlCommand cmd = new SqlCommand(sql, _cnn))
+            using (SQLiteCommand cmd = new SQLiteCommand(sql, _cnn))
             {
-                using (SqlDataReader dtr = cmd.ExecuteReader())
+                using (SQLiteDataReader dtr = cmd.ExecuteReader())
                 {
                     while (dtr.Read())
                     {
@@ -56,7 +56,7 @@ namespace Sistem_Manajemen_Inventori.Model.Repository
 
             string sql = "INSERT INTO Kategori(Id_Kategori, Nama_Kategori, Jumlah) VALUES(@Id_Kategori, @Nama_Kategori, @Jumlah)";
 
-            using (SqlCommand cmd = new SqlCommand(sql, _cnn))
+            using (SQLiteCommand cmd = new SQLiteCommand(sql, _cnn))
             {
                 cmd.Parameters.AddWithValue("@Id_Kategori", kategori.id_kategori);
                 cmd.Parameters.AddWithValue("@Nama_Kategori", kategori.nama_kategori);
@@ -81,7 +81,7 @@ namespace Sistem_Manajemen_Inventori.Model.Repository
 
             string sql = "DELETE FROM kategori WHERE id_kategori = @id_kategori";
 
-            using (SqlCommand cmd = new SqlCommand(sql, _cnn))
+            using (SQLiteCommand cmd = new SQLiteCommand(sql, _cnn))
             {
                 cmd.Parameters.AddWithValue("@Id_Kategori", kategori.id_kategori);
 
@@ -106,7 +106,7 @@ namespace Sistem_Manajemen_Inventori.Model.Repository
 
             string sql = @"SELECT COUNT(*) FROM kategori";
 
-            using (SqlCommand command = new SqlCommand(sql, _cnn))
+            using (SQLiteCommand command = new SQLiteCommand(sql, _cnn))
             {
 
                 try
@@ -129,7 +129,7 @@ namespace Sistem_Manajemen_Inventori.Model.Repository
             using (DbContext context = new DbContext())
             {
                 string query = "SELECT Id_Kategori FROM Kategori WHERE Nama_Kategori = @namaKategori";
-                using (SqlCommand cmd = new SqlCommand(query, context.Conn))
+                using (SQLiteCommand cmd = new SQLiteCommand(query, context.Conn))
                 {
                     cmd.Parameters.AddWithValue("@namaKategori", category.nama_kategori);
                     try
@@ -154,7 +154,7 @@ namespace Sistem_Manajemen_Inventori.Model.Repository
                        SET Nama_Kategori = @NamaKategoriBaru 
                        WHERE Id_Kategori = @IdKategori";
 
-                using (SqlCommand cmd = new SqlCommand(sql, context.Conn))
+                using (SQLiteCommand cmd = new SQLiteCommand(sql, context.Conn))
                 {
                     cmd.Parameters.AddWithValue("@NamaKategoriBaru", category.nama_kategori);
                     cmd.Parameters.AddWithValue("@IdKategori", category.id_kategori);

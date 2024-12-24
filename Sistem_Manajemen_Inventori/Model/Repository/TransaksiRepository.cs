@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
+using System.Data.SQLite;
 using Sistem_Manajemen_Inventori.Model.Entity;
 using Sistem_Manajemen_Inventori.Model.Contex;
 
@@ -11,7 +11,7 @@ namespace Sistem_Manajemen_Inventori.Model.Repository
 {
     public class TransaksiRepository
     {
-        private SqlConnection _conn;
+        private SQLiteConnection _conn;
 
         public TransaksiRepository(DbContext context)
         {
@@ -27,7 +27,7 @@ namespace Sistem_Manajemen_Inventori.Model.Repository
 
             string sql = @"INSERT INTO Transaksi (id_barang, id_user, tgl_transaksi, id_kategori) VALUES (@id_barang, @id_user, @tgl_transaksi, @id_kategori)";
 
-            using (SqlCommand cmd = new SqlCommand(sql, _conn))
+            using (SQLiteCommand cmd = new SQLiteCommand(sql, _conn))
             {
                 cmd.Parameters.AddWithValue("@id_barang", transaksi.Id_Barang);
                 cmd.Parameters.AddWithValue("@id_user", transaksi.Id_User);
@@ -63,11 +63,11 @@ namespace Sistem_Manajemen_Inventori.Model.Repository
                             JOIN Kategori k ON t.Id_Kategori = k.Id_Kategori
                             JOIN User_lr u ON t.Id_User = u.Id_User;";
 
-            using (SqlCommand cmd = new SqlCommand(sql, _conn))
+            using (SQLiteCommand cmd = new SQLiteCommand(sql, _conn))
             {
                 try
                 {
-                    using (SqlDataReader dtr = cmd.ExecuteReader())
+                    using (SQLiteDataReader dtr = cmd.ExecuteReader())
                     {
                         while (dtr.Read())
                         {
@@ -113,13 +113,13 @@ namespace Sistem_Manajemen_Inventori.Model.Repository
                         JOIN User_lr u ON t.Id_User = u.Id_User
                         WHERE b.nama_barang Like @nama_barang;";
 
-            using (SqlCommand cmd = new SqlCommand(sql, _conn))
+            using (SQLiteCommand cmd = new SQLiteCommand(sql, _conn))
             {
                 cmd.Parameters.AddWithValue("@nama_barang", namaBarang + "%");
 
                 try
                 {
-                    using (SqlDataReader dtr = cmd.ExecuteReader())
+                    using (SQLiteDataReader dtr = cmd.ExecuteReader())
                     {
                         while (dtr.Read())
                         {
@@ -152,7 +152,7 @@ namespace Sistem_Manajemen_Inventori.Model.Repository
             using (DbContext context = new DbContext())
             {
                 string query = "SELECT Id_Barang FROM Barang WHERE Nama_Barang = @namaBarang";
-                using (SqlCommand cmd = new SqlCommand(query, context.Conn))
+                using (SQLiteCommand cmd = new SQLiteCommand(query, context.Conn))
                 {
                     cmd.Parameters.AddWithValue("@namaBarang", namaBarang);
                     try
