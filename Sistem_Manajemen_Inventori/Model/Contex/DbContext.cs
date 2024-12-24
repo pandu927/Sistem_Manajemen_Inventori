@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.SQLite;
 using Sistem_Manajemen_Inventori.Model.Entity;
 
 
@@ -13,10 +13,9 @@ namespace Sistem_Manajemen_Inventori.Model.Contex
     public class DbContext : IDisposable
     {
         // deklarasi private variabel / field
-        private SqlConnection _conn;
+        private SQLiteConnection _conn;
         // deklarasi property Conn (connection), untuk menyimpan objek koneksi
-
-        public SqlConnection Conn
+        public SQLiteConnection Conn
         {
             get
             {
@@ -24,13 +23,13 @@ namespace Sistem_Manajemen_Inventori.Model.Contex
             }
         }
 
-        private SqlConnection GetOpenConnection()
+        private SQLiteConnection GetOpenConnection()
         {
-            SqlConnection conn = null;
+            SQLiteConnection conn = null;
             try
             {
-                string connectionString = "Server=DESKTOP-MIFVUB5;Database=DB_Manajemen_Inventaris_Baranng;Trusted_Connection=True;";
-                conn = new SqlConnection(connectionString);
+                string connectionString = @"D:\Project pemroh\Sistem_Manajemen_Inventori\Database\database.db";
+                conn = new SQLiteConnection(connectionString);
                 conn.Open(); // Buka koneksi
             }
             catch (Exception ex)
